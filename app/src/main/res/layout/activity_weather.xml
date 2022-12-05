@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.weatherapp.viewmodels.WeatherViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/relRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_off_white"
+        tools:context=".ui.WeatherActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgLoading"
+            android:layout_width="@dimen/_96sdp"
+            android:layout_height="@dimen/_96sdp"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_loading" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llTempDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_56sdp"
+                android:textColor="@color/black_temp_title"
+                android:textSize="@dimen/_96ssp"
+                android:textStyle="bold"
+                tools:text="24C" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/black_city_title"
+                android:textSize="@dimen/_36ssp"
+                tools:text="Bangalore" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llErrorState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_error"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_96sdp"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:text="@string/error_something_went_wrong"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_54ssp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_44sdp"
+                android:background="@color/bg_retry"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:text="RETRY"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+</layout>
