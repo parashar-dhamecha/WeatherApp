@@ -57,7 +57,7 @@ class WeatherActivity : AppCompatActivity(), WeatherCallListener {
             }
             val forecastList = mutableListOf<ForecastResponse.ForecastData>()
             for (i in forecastResponse.list.indices) {
-                if (forecastResponse.list[i].dt_txt.contains("12:00:00", true)){
+                if (forecastResponse.list[i].dt_txt.contains("12:00:00", true)) {
                     forecastList.add(forecastResponse.list[i])
                 }
             }
@@ -70,7 +70,6 @@ class WeatherActivity : AppCompatActivity(), WeatherCallListener {
 
         }
 
-
     }
 
     override fun onWeatherCallStarted() {
@@ -78,15 +77,6 @@ class WeatherActivity : AppCompatActivity(), WeatherCallListener {
         binding.imgLoading.visible()
         binding.imgLoading.rotateAnimation()
     }
-
-    override fun onWeatherCallSuccess() {
-
-    }
-
-    override fun onWeatherCallFailure() {
-
-    }
-
 
 }
 

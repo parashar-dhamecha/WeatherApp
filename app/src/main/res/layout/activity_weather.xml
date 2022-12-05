@@ -41,6 +41,7 @@
                 android:textColor="@color/black_temp_title"
                 android:textSize="@dimen/_96ssp"
                 android:textStyle="bold"
+                android:fontFamily="@font/roboto_black"
                 tools:text="24°" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -50,6 +51,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:textColor="@color/black_city_title"
+                android:fontFamily="@font/roboto_thin"
                 android:textSize="@dimen/_36ssp"
                 tools:text="Bangalore" />
 
@@ -89,6 +91,7 @@
                 android:paddingHorizontal="@dimen/_16sdp"
                 android:text="@string/error_something_went_wrong"
                 android:textColor="@color/white"
+                android:fontFamily="@font/roboto_thin"
                 android:textSize="@dimen/_54ssp" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -100,6 +103,7 @@
                 android:background="@color/bg_retry"
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:text="RETRY"
+                android:fontFamily="@font/roboto"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16ssp" />
 
