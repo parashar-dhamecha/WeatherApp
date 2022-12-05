@@ -1,2 +1,2 @@
 # WeatherApp
-Weather App with MVVM Clean Architecture, Coroutines, Dagger Hilt
+Weather App with Kotlin, MVVM Clean Architecture, Coroutines, Dagger Hilt 
