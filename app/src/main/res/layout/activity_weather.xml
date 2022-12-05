@@ -22,6 +22,7 @@
             android:layout_width="@dimen/_96sdp"
             android:layout_height="@dimen/_96sdp"
             android:layout_centerInParent="true"
+            android:visibility="visible"
             app:srcCompat="@drawable/ic_loading" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -40,7 +41,7 @@
                 android:textColor="@color/black_temp_title"
                 android:textSize="@dimen/_96ssp"
                 android:textStyle="bold"
-                tools:text="24C" />
+                tools:text="24°" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtCity"
@@ -51,6 +52,23 @@
                 android:textColor="@color/black_city_title"
                 android:textSize="@dimen/_36ssp"
                 tools:text="Bangalore" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardForecast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_62sdp"
+                android:visibility="gone"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="@dimen/_14sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcyForecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_16sdp" />
+            </com.google.android.material.card.MaterialCardView>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

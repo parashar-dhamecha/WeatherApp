@@ -2,11 +2,14 @@ package com.example.weatherapp.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.R
+import com.example.weatherapp.data.adapters.ForecastAdapter
+import com.example.weatherapp.data.models.ForecastResponse
 import com.example.weatherapp.data.network.WeatherCallListener
 import com.example.weatherapp.databinding.ActivityWeatherBinding
 import com.example.weatherapp.utils.gone
@@ -47,6 +50,26 @@ class WeatherActivity : AppCompatActivity(), WeatherCallListener {
             binding.txtTemp.text = weatherResponse.main.temp.toInt().toString() + "°"
             binding.txtCity.text = weatherResponse.name
         }
+
+        viewModel.forecastResponse.observe(this) { forecastResponse ->
+            if (forecastResponse == null) {
+                return@observe
+            }
+            val forecastList = mutableListOf<ForecastResponse.ForecastData>()
+            for (i in forecastResponse.list.indices) {
+                if (forecastResponse.list[i].dt_txt.contains("12:00:00", true)){
+                    forecastList.add(forecastResponse.list[i])
+                }
+            }
+            binding.rcyForecast.also { rcy ->
+                rcy.layoutManager = LinearLayoutManager(this)
+                rcy.adapter = ForecastAdapter(this, forecastList)
+            }
+            binding.cardForecast.visible()
+            binding.cardForecast.startAnimation(AnimationUtils.loadAnimation(this@WeatherActivity, R.anim.slide_up))
+
+        }
+
 
     }
 

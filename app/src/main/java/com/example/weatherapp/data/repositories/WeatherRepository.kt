@@ -8,4 +8,5 @@ class WeatherRepository
 
     suspend fun getTodayWeather() = myAPI.getWeatherToday()
 
+    suspend fun getForecast() = myAPI.getForecast()
 }

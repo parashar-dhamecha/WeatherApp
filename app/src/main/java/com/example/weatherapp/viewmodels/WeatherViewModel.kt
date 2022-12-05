@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.data.models.ForecastResponse
 import com.example.weatherapp.data.models.WeatherResponse
 import com.example.weatherapp.data.network.WeatherCallListener
 import com.example.weatherapp.data.repositories.WeatherRepository
@@ -21,8 +22,13 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
     val weatherResp: LiveData<WeatherResponse>
         get() = _resp
 
+    private val _forecastResponse=MutableLiveData<ForecastResponse>()
+    val forecastResponse:LiveData<ForecastResponse>
+        get()= _forecastResponse
+
     init {
         getTodayWeather()
+        getForecast()
     }
 
     fun getTodayWeather() {
@@ -38,6 +44,19 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
                     weatherCallListener?.onWeatherCallFailure()
                 }
 
+            }
+        }
+    }
+
+    fun getForecast(){
+        viewModelScope.launch {
+            repository.getForecast().let { response->
+                if (response.isSuccessful){
+                    _forecastResponse.postValue(response.body())
+                }else{
+                    Log.e(javaClass.simpleName, "getForecast: API ERROR --- ${response.message()} ")
+                    _forecastResponse.postValue(null)
+                }
             }
         }
     }

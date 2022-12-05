@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="error_something_went_wrong">Something went wrong at out end!</string>
+    <string name="degree_character">°</string>
 </resources>
